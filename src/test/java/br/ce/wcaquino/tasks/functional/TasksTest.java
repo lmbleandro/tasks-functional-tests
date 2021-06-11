@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogCombiner;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -17,9 +18,7 @@ public class TasksTest {
 	public WebDriver acessarAplicacao() throws MalformedURLException {
 //		WebDriver driver = new ChromeDriver();
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		//WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.12:4444/wd/hub"), cap);
 		WebDriver driver = new RemoteWebDriver(new URL("http://10.151.83.139:4444/wd/hub"), cap);
-		
 		driver.navigate().to("http://10.151.83.127:8001/tasks");	
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;		
@@ -31,6 +30,7 @@ public class TasksTest {
 			
 			//clicar em Add Todo
 			driver.findElement(By.id("addTodo")).click();
+			
 		
 			//escrver dscrição
 			driver.findElement(By.id("task")).sendKeys("Teste via Selenium");
